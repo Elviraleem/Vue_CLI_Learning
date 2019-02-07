@@ -10,10 +10,9 @@ new Vue ({
     
     methods: {
         getToDos(){
-            console.log("in");
             axios.get('https://jsonplaceholder.typicode.com/todos')
             .then((response) => {
-                 console.log(response);
+                 this.tareas = response.data;
 
             });
                  
