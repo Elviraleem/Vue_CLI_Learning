@@ -1,3 +1,9 @@
+Vue.component('mis_tareas', {
+     props:['tasks'],
+     template:`<ul><li v-for="tarea in tasks">{{ tarea.title }} </li></ul>`,
+
+});
+
 new Vue ({
     el: 'main',
     mounted(){
@@ -9,13 +15,14 @@ new Vue ({
     },
     
     data:{
-        tareas: []
+        tareas: [],
+        tareasCasa: [
+             {title: "Hacer la compra"},
+             {title: "Cocinar"},
+             {title: "Arreglar la bici"}
+            
+        ]
     },
-    
-    methods: {
-     
-
-        }
     
         
 });
