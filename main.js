@@ -1,7 +1,11 @@
 new Vue ({
     el: 'main',
     mounted(){
-        this.getToDos();
+     axios.get('https://jsonplaceholder.typicode.com/todos')
+     .then((response) => {
+          this.tareas = response.data;
+
+     });
     },
     
     data:{
@@ -9,14 +13,7 @@ new Vue ({
     },
     
     methods: {
-        getToDos(){
-            axios.get('https://jsonplaceholder.typicode.com/todos')
-            .then((response) => {
-                 this.tareas = response.data;
-
-            });
-                 
-            }
+     
 
         }
     
