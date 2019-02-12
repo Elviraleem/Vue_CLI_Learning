@@ -1,18 +1,21 @@
 Vue.config.devtools = true
 
-Vue.component ('elegir-ganador', {
+Vue.component ('sort-names', {
      props: ['listado'],
-     template: '#elegir-ganador-template',
+     template: '#sort-names-template',
      methods:{
-          elegirGanador(){
-               cantidad = this.participantes.length;
-               indice = Math.floor((Math.random()) * cantidad);
-               this.ganador = this.participantes [indice-1];
+         
+     },
+     computed:{
+          
+          sortNames(){
+               return this.participantes.sort();
           }
+         
+
      },
      data(){
           return{
-               ganador: false,
                participantes: this.listado
           }
      }
