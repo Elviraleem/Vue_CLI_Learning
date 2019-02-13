@@ -1,3 +1,5 @@
+const eventBus = new Vue;
+
 Vue.component ('listado-productos', {
     props: ['productos'],
     template: `
@@ -22,18 +24,34 @@ Vue.component ('listado-productos', {
     },
     methods: {
         addProduct(precio){
-            this.cantidadProducto++;
-            this.total += precio
-        },
+           eventBus.$emit('add', precio);
+            },
+            
+      
         substractProduct(precio) {
-            this.cantidadProducto--;
-            this.total -= precio;
+            eventBus.$emit('substract', precio);
+            }
+            
+        },
+    
+
+});
+
+Vue.component ('carrito-compra' {
+    template: `
+        <div>
+            <h1>{{ total.toFixed(2) }} €</h1>
+            <h3>{{ cantidadProductos}} productos
+        
+        </div>
+    
+            `,
+    data() {
+        return {
+            total: 0,
+            cantidadProductos: 0,
         }
     }
-
-
-
-
 
 });
 
