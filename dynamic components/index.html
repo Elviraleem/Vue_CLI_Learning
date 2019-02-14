@@ -7,9 +7,18 @@
 <body>
     
    <main>
-    <listado-tareas></listado-tareas>
+       <button @click="seleccionado = 'listado-tareas'">Tareas</button>
+       <button @click="seleccionado = 'contacto'">Contacto</button>
+       <button @click="seleccionado = 'bio'">Bio</button>
     
-    <pre>{{ $data }}</pre>
+       <!--An element named "component" with its "is" attribute to 
+        switch dinamically between multiple components-->
+       <component :is="seleccionado"></component>
+
+    <!-- <listado-tareas></listado-tareas>
+    <contacto></contacto>
+    <bio></bio> -->
+  
 </main>
     <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
    <script src="main.js"></script>

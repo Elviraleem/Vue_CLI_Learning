@@ -5,6 +5,7 @@ Vue.component('listado-tareas',{
                     <tarea v-for="tarea in tareas" :tarea="tarea"></tarea>
                 
                 </ul>
+                <hr>
             
             
             </div>
@@ -23,19 +24,32 @@ Vue.component('listado-tareas',{
         }
     }
 
-
 });
 
 Vue.component('tarea', {
     props:['tarea'],
     template:
         `<li>{{ tarea }}</li>`
-})
+});
+Vue.component('contacto', {
+    template: 
+        `<div><p>Mail de contacto: <a href="mailto:elviraleem@gmail.com">elviraleem@gmail.com</a></p><hr></div>`
+});
+
+Vue.component('bio', {
+    template: 
+        `<div><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta expedita sit saepe earum! Dolorum, consectetur veniam ad autem iusto totam.</p><hr></div>`
+});
+
 
 
 new Vue({
-    el: 'main'
+    el: 'main',
+    data:{
+        seleccionado: 'listado-tareas'
 
+    }
+    
 
-}) 
+});
 
