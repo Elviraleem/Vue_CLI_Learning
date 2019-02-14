@@ -1,4 +1,8 @@
-const eventBus = new Vue;
+/*Vue's core team generally advises against 
+the use of Global Event Buses in favor of 
+something more robust, such as Vuex.*/
+
+const eventBus = new Vue(); 
 
 Vue.component ('listado-productos', {
     props: ['productos'],
@@ -10,8 +14,6 @@ Vue.component ('listado-productos', {
                 <button @click="addProduct(producto.precio)">+</button>
                 <button @click="substractProduct(producto.precio)">-</button>
                 </li>
-
-                <li>{{ total }} €</li>
             </ul>
         
         </div>
@@ -25,8 +27,7 @@ Vue.component ('listado-productos', {
     methods: {
         addProduct(precio){
            eventBus.$emit('add', precio);
-            },
-            
+            }, 
       
         substractProduct(precio) {
             eventBus.$emit('substract', precio);
@@ -34,14 +35,13 @@ Vue.component ('listado-productos', {
             
         },
     
-
 });
 
-Vue.component ('carrito-compra' {
+Vue.component ('carrito-compra', {
     template: `
         <div>
             <h1>{{ total.toFixed(2) }} €</h1>
-            <h3>{{ cantidadProductos}} productos
+            <h3>{{ cantidadProductos}} productos</h3>
         
         </div>
     
@@ -51,6 +51,24 @@ Vue.component ('carrito-compra' {
             total: 0,
             cantidadProductos: 0,
         }
+    },
+    created(){
+        eventBus.$on('add', (precio)=>{
+            console.log(precio);
+            if(this.total >= 0){
+                this.total += precio;
+                this.cantidadProductos++;
+            }
+           
+        }),
+        eventBus.$on('substract', (precio)=>{
+            console.error(precio);
+            if(this.total > 0){
+                this.total -= precio;
+                this.cantidadProductos--;
+            }
+           
+        })
     }
 
 });
